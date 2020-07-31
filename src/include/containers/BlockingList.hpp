@@ -68,7 +68,7 @@ public:
 		return List<T>::remove(removeNode);
 	}
 
-	size_t size() const
+	size_t size()
 	{
 		LockGuard lg{_mutex};
 		return List<T>::size();
@@ -80,7 +80,7 @@ public:
 		List<T>::clear();
 	}
 
-	LockGuard getLockGuard() { return LockGuard{_mutex}; }
+	pthread_mutex_t &mutex() { return _mutex; }
 
 private:
 
